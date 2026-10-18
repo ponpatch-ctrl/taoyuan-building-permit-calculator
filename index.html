@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>桃園建照計算</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <p class="eyebrow">TAOYUAN PERMIT CALCULATOR</p>
+      <h1>桃園建照計算</h1>
+      <p class="subtitle">法定工程造價與建照掛件設計費試算</p>
+    </header>
+
+    <section class="card input-card">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">STEP 01</p>
+          <h2>輸入案件資料</h2>
+        </div>
+        <span class="status-dot">即時計算</span>
+      </div>
+      <div class="grid two-col">
+        <label>構造類別
+          <select id="structure">
+            <option value="rc">鋼筋混凝土造</option>
+            <option value="src">鋼骨鋼筋混凝土造</option>
+            <option value="steel">鋼骨構造</option>
+          </select>
+        </label>
+        <label>建築物類別
+          <select id="category">
+            <option value="general">一般建築</option>
+            <option value="public">公共及高層建築</option>
+            <option value="special">特殊建築</option>
+          </select>
+        </label>
+        <label>總樓地板面積（㎡）
+          <input id="area" type="number" min="0" step="0.01" value="1000">
+        </label>
+        <label>陽台面積（㎡）
+          <input id="balcony" type="number" min="0" step="0.01" value="0">
+        </label>
+        <label>花台面積（㎡）
+          <input id="flower" type="number" min="0" step="0.01" value="0">
+        </label>
+        <label>地上樓層數
+          <input id="above" type="number" min="0" step="1" value="5">
+        </label>
+        <label>地下樓層數
+          <input id="below" type="number" min="0" step="1" value="0">
+        </label>
+        <label>土方數量（m³）
+          <input id="earthwork" type="number" min="0" step="0.01" value="0">
+        </label>
+        <label>圍牆長度（m）
+          <input id="fence" type="number" min="0" step="0.01" value="0">
+        </label>
+      </div>
+      <p class="hint">造價面積 = 總樓地板面積 + 陽台面積 + 花台面積。第一版以地上樓層數＋地下樓層數判定單價級距。</p>
+    </section>
+
+    <section class="results-grid">
+      <article class="result-card primary">
+        <p>法定工程造價</p>
+        <strong id="constructionCost">NT$ 0</strong>
+        <small id="unitPriceNote">單價 NT$ 0／㎡</small>
+      </article>
+      <article class="result-card accent">
+        <p>建照掛件設計費（100%）</p>
+        <strong id="architectFee">NT$ 0</strong>
+        <small>依桃園建築師酬金表低標試算</small>
+      </article>
+    </section>
+
+    <section class="card payment-card">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">STEP 02</p>
+          <h2>設計費付款流程</h2>
+        </div>
+        <span class="pill">桃園規則</span>
+      </div>
+      <div class="payment-row"><span>掛件先繳 50%</span><strong id="filingPayment">NT$ 0</strong></div>
+      <div class="payment-row refund"><span>第一期退回金額（設計費 27%）</span><strong id="refundable">NT$ 0</strong></div>
+      <div class="payment-row"><span>領照前補繳至 70%（補 20%）</span><strong id="permitTopUp">NT$ 0</strong></div>
+      <p class="hint">計算方式：設計費總額 × 27%。</p>
+    </section>
+
+    <footer>資料依桃園市 115 年工程造價標準表與建築師酬金標準表試算，正式送件前請由承辦建築師確認。</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
